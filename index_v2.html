@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sip & Stroke Caribbean</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet" />
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Nunito,sans-serif;background:#FFFBF0;color:#073B4C}
+nav{background:white;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px rgba(0,0,0,.1);position:sticky;top:0;z-index:100;gap:18px}
+nav img{height:60px;width:auto;max-width:220px;object-fit:contain;border-radius:6px}
+.navlinks{display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.navlinks a{font-size:13px;font-weight:800;color:#073B4C;text-decoration:none;opacity:.75}
+.bb{background:#FF6B4A;color:white;border:none;border-radius:50px;padding:10px 22px;font-size:14px;font-weight:800;cursor:pointer;font-family:Nunito,sans-serif}
+.staff{font-size:12px;font-weight:800;color:#7A9EAE;background:white;border:2px solid #E8E0D0;padding:7px 14px;border-radius:50px;cursor:pointer;font-family:Nunito,sans-serif}
+.hero{position:relative;min-height:88vh;overflow:hidden;display:flex;align-items:flex-end}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.05) 20%,rgba(0,0,0,.76) 100%)}
+.hero-content{position:relative;z-index:1;padding:45px 24px;text-align:center;width:100%}
+.hero-tag{font-family:Pacifico,cursive;font-size:18px;color:#FFD166;letter-spacing:4px;margin-bottom:12px}
+.hero-sub{font-size:18px;color:rgba(255,255,255,.92);margin-bottom:28px;line-height:1.6}
+.sec{padding:62px 24px;background:white}
+.sec-alt{padding:62px 24px;background:#FFFBF0}
+.sec-title{font-family:Pacifico,cursive;font-size:clamp(24px,4vw,36px);text-align:center;color:#073B4C;margin-bottom:8px}
+.sec-sub{font-size:14px;color:#7A9EAE;text-align:center;margin:0 auto 34px;max-width:760px;line-height:1.7}
+.welcome-card{max-width:980px;margin:0 auto;background:#FFF8E8;border:1px solid rgba(255,209,102,.55);border-radius:24px;padding:34px;box-shadow:0 8px 30px rgba(0,0,0,.08);text-align:center}
+.welcome-card h2{font-family:Pacifico,cursive;font-size:34px;margin-bottom:12px}
+.welcome-card p{line-height:1.8;color:#556660;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;max-width:1120px;margin:0 auto}
+.card{border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.12);background:#073B4C;transition:transform .2s;cursor:pointer}
+.card:hover{transform:translateY(-4px)}
+.card img{width:100%;height:220px;object-fit:cover;object-position:top;display:block}
+.card-body{padding:18px;position:relative}
+.card-price{position:absolute;top:-40px;right:12px;background:#FF6B4A;border-radius:50px;padding:6px 14px;font-family:Pacifico,cursive;font-size:16px;color:white}
+.card-name{font-size:16px;font-weight:900;color:white;margin-bottom:5px}
+.card-meta{font-size:12px;color:rgba(255,255,255,.75);margin-bottom:8px}
+.card-desc{font-size:12px;color:rgba(255,255,255,.68);line-height:1.5;margin-bottom:14px}
+.card-btn{width:100%;background:#FF6B4A;color:white;border:none;border-radius:50px;padding:11px;font-size:13px;font-weight:800;cursor:pointer;font-family:Nunito,sans-serif}
+.fam-wrap{max-width:1100px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.15)}
+.fam-top img{width:100%;display:block}
+.fam-split{display:flex;height:340px}
+.fam-half{flex:1;overflow:hidden}
+.fam-half img{width:100%;height:100%;object-fit:cover;object-position:top}
+.fam-divider{width:4px;background:white;flex-shrink:0}
+.fam-bar{background:#073B4C}
+.fam-row{padding:20px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.fam-row+.fam-row{border-top:1px solid rgba(255,255,255,.1)}
+.fam-title{font-family:Pacifico,cursive;font-size:20px;color:white;margin-bottom:3px}
+.fam-meta{font-size:12px;color:rgba(255,255,255,.65)}
+.fam-price{font-family:Pacifico,cursive;font-size:26px;color:#FFD166}
+.sess-grid,.partner-grid,.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;max-width:1000px;margin:0 auto}
+.sess-card,.partner-card,.review-card{background:white;border-radius:16px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.sess-name,.partner-name{font-weight:900;font-size:14px;margin-bottom:5px}
+.sess-date,.partner-info{font-size:12px;color:#7A9EAE;margin-bottom:10px;line-height:1.6}
+.sess-badge{font-size:10px;font-weight:900;padding:4px 10px;border-radius:20px;display:inline-block;background:rgba(0,191,165,.15);color:#00BFA5}
+.review-stars{color:#B8860B;font-size:16px;margin-bottom:6px}
+.review-text{font-size:13px;color:#556660;line-height:1.7;margin-bottom:10px}
+.review-name{font-weight:900;font-size:13px}
+.terms-sec{padding:48px 24px;background:#FFF8E8;border-top:3px solid #FFD166}
+.terms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;max-width:900px;margin:0 auto}
+.term{background:white;border-radius:12px;padding:16px;border:1px solid rgba(255,209,102,.4);display:flex;gap:10px}
+.term-icon{font-size:22px;flex-shrink:0}
+.term-title{font-weight:900;font-size:13px;margin-bottom:4px}
+.term-text{font-size:12px;color:#556660;line-height:1.6}
+.contact-bar{max-width:900px;margin:28px auto 0;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.contact-pill{background:white;border:1px solid #E8E0D0;border-radius:999px;padding:10px 14px;font-size:13px;font-weight:800;color:#073B4C;text-decoration:none}
+footer{background:#073B4C;padding:40px 24px;text-align:center}
+footer img{height:60px;border-radius:8px;margin:0 auto 14px;display:block}
+footer p,footer a{font-size:12px;color:rgba(255,255,255,.7);margin-top:6px;text-decoration:none}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:999;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto}
+.modal-bg.open{display:flex}
+.modal{background:white;border-radius:20px;width:100%;max-width:580px;margin:auto;position:relative}
+.modal-logo{width:100%;border-radius:20px 20px 0 0;display:block}
+.modal-body{padding:24px}
+.modal-close{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.5);border:none;border-radius:50%;width:34px;height:34px;cursor:pointer;color:white;font-size:18px;font-weight:900;z-index:10}
+.lbl{display:block;font-size:10px;font-weight:900;color:#073B4C;letter-spacing:.08em;margin:10px 0 5px}
+.inp{width:100%;padding:11px 14px;border:2px solid #E8E0D0;border-radius:10px;font-family:Nunito,sans-serif;font-size:14px;outline:none;background:white;margin-bottom:2px}
+.btn-row{display:flex;gap:10px;margin-top:16px}
+.btn-back{flex:1;background:white;color:#FF6B4A;border:2px solid #FF6B4A;border-radius:50px;padding:12px;font-size:14px;font-weight:900;cursor:pointer;font-family:Nunito,sans-serif}
+.btn-next{flex:2;background:#FF6B4A;color:white;border:none;border-radius:50px;padding:12px;font-size:14px;font-weight:900;cursor:pointer;font-family:Nunito,sans-serif}
+.choice{border-radius:12px;background:#073B4C;padding:14px;cursor:pointer;margin-bottom:8px}
+.choice b{color:white;font-size:14px}
+.choice small{display:block;color:rgba(255,255,255,.7);margin-top:4px}
+.sum-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #F0EDE8;font-size:13px;gap:20px}
+.tot-bar{margin-top:14px;padding:14px;background:#E8F8F5;border-radius:12px;display:flex;justify-content:space-between;align-items:center}
+.note{background:#FFF8E8;border:1px solid #FFD166;border-radius:12px;padding:12px;margin-top:12px;font-size:12px;line-height:1.6;color:#556660}
+@media(max-width:720px){nav{align-items:flex-start;flex-direction:column}.fam-split{flex-direction:column;height:auto}.fam-half{height:200px}.fam-divider{width:100%;height:4px}}
+</style>
+</head>
+<body>
+<nav>
+  <img src="./3d1fdc61f8eaa26504c7bd1883b2c4fb959b5490d7bd7009ac6072700071b41a.png" alt="Sip and Stroke Caribbean" />
+  <div class="navlinks">
+    <a href="#welcome">Welcome</a><a href="#packages">Packages</a><a href="#sessions">Sessions</a><a href="#partners">Partners</a><a href="#reviews">Reviews</a><a href="#terms">Terms</a>
+    <button class="staff" onclick="location.href='dashboard_v2.html'">Staff Login</button><button class="bb" onclick="openModal(null)">Book Now</button>
+  </div>
+</nav>
+<section class="hero">
+  <img src="./39d01f7abfeb50e54e5ab81481fd80d8233236bf0339ba6d2d7c2c936ba2e2fd.png" alt="Sip and Stroke Caribbean" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content"><div class="hero-tag">SIP &middot; PAINT &middot; CREATE</div><p class="hero-sub" id="heroSub">Paint your memories at paradise.<br>Sip, create &amp; take your masterpiece home.</p><button class="bb" style="font-size:16px;padding:16px 36px;box-shadow:0 8px 32px rgba(255,107,74,.5)" onclick="openModal(null)">Book Your Session 🎨</button></div>
+</section>
+<section class="sec" id="welcome"><div class="welcome-card"><h2 id="welcomeTitle">Welcome to Sip & Stroke Caribbean</h2><p id="welcomeMessage">Create unforgettable memories in paradise. Whether you're celebrating with your partner, family, friends, or children, our guided paint experiences combine Caribbean beauty, great drinks, and lasting memories.</p></div></section>
+<section class="sec" id="packages"><div class="sec-title">Our Packages 🎨</div><div class="sec-sub">Every session includes drinks, supplies and your canvas to take home</div><div class="grid" id="packageGrid"></div></section>
+<section style="padding:0 24px 60px;background:white;"><div style="text-align:center;padding:50px 0 30px"><div class="sec-title">Mother / Father &amp; Daughter 💕</div><div class="sec-sub">Create lasting memories with the ones you love most</div></div><div class="fam-wrap"><div class="fam-top"><img src="./ae820f1ff6cdaea3060e7f1fbcdaf3f6781200743201d72a778b68c6f4d1c428.png" alt="Family"/></div><div class="fam-split"><div class="fam-half"><img src="./95ac79f14f4894531c5ef1bb9b1e005cd1053c35a2755d3a04ba36f7939cb841.png" alt="Mother and Daughter"/></div><div class="fam-divider"></div><div class="fam-half"><img src="./d6f477e5408d0727ea9924e128acf14fdbbbc297fb8c0ac0896381cb57acaf95.png" alt="Father and Daughter"/></div></div><div class="fam-bar"><div class="fam-row"><div><div class="fam-title">Family Session</div><div class="fam-meta">Whole family &middot; 8x10 or 11x14 &middot; 2 hours</div></div><div style="display:flex;align-items:center;gap:16px"><span class="fam-price" id="familyPrice">$250</span><button class="bb" onclick="openModal('family')">Book Now</button></div></div><div class="fam-row"><div><div class="fam-title">Mother / Father &amp; Daughter</div><div class="fam-meta">Per pair &middot; 8x10 or 11x14 &middot; 2 hours</div></div><div style="display:flex;align-items:center;gap:16px"><span class="fam-price" id="motherPrice">$150</span><button class="bb" onclick="openModal('mother')">Book Now</button></div></div></div></div></section>
+<section class="sec-alt" id="sessions"><div class="sec-title">Next Available Sessions 📅</div><div class="sec-sub">Dates automatically hide after they pass. Add and edit sessions from the dashboard.</div><div class="sess-grid" id="sessionGrid"></div></section>
+<section class="sec" id="partners"><div class="sec-title">Partner Resorts & Hotels 🌴</div><div class="sec-sub">Add partner resorts in the dashboard. Keep this section hidden until you're ready by setting partners inactive.</div><div class="partner-grid" id="partnerGrid"></div></section>
+<section class="sec-alt" id="reviews"><div class="sec-title">Guest Reviews ⭐</div><div class="sec-sub">Turn reviews on from the dashboard once the business starts collecting real customer feedback.</div><div class="review-grid" id="reviewGrid"></div></section>
+<section class="terms-sec" id="terms"><div class="sec-title">📋 Terms & Conditions</div><div class="sec-sub">Please read before booking your session</div><div class="terms-grid" id="termsGrid"></div><div class="contact-bar" id="contactBar"></div></section>
+<footer><img src="./3d1fdc61f8eaa26504c7bd1883b2c4fb959b5490d7bd7009ac6072700071b41a.png" alt="Sip and Stroke Caribbean"/><p id="footerEmail">info@sipandstrokecaribbean.com</p><p id="footerSocial"></p><p style="opacity:.5;margin-top:8px;font-size:11px">&copy; <span id="year"></span> Sip &amp; Stroke Caribbean &middot; All Rights Reserved</p></footer>
+<div class="modal-bg" id="modal-bg"><div class="modal"><button class="modal-close" onclick="closeModal()">×</button><img class="modal-logo" src="./3d1fdc61f8eaa26504c7bd1883b2c4fb959b5490d7bd7009ac6072700071b41a.png" alt="Sip and Stroke Caribbean"/><div class="modal-body" id="modal-body"></div></div></div>
+<script>
+const IMG={couples:'39d01f7abfeb50e54e5ab81481fd80d8233236bf0339ba6d2d7c2c936ba2e2fd.png',solo:'3d1fdc61f8eaa26504c7bd1883b2c4fb959b5490d7bd7009ac6072700071b41a.png',group:'68deb8a90498177c24089254cb9937241a1b513acf39160764d000df7e2b946e.png',kids:'983bc7d94d5c2d47673d32868ffe7dac1d71ca708b8da0e0c70f31ca9df92593.png',family:'ae820f1ff6cdaea3060e7f1fbcdaf3f6781200743201d72a778b68c6f4d1c428.png',mother:'95ac79f14f4894531c5ef1bb9b1e005cd1053c35a2755d3a04ba36f7939cb841.png',father:'d6f477e5408d0727ea9924e128acf14fdbbbc297fb8c0ac0896381cb57acaf95.png'};
+const DEFAULT={
+ content:{welcomeTitle:'Welcome to Sip & Stroke Caribbean',welcomeMessage:"Create unforgettable memories in paradise. Whether you're celebrating with your partner, family, friends, or children, our guided paint experiences combine Caribbean beauty, great drinks, and lasting memories.",heroSub:'Paint your memories at paradise.<br>Sip, create & take your masterpiece home.'},
+ contact:{email:'info@sipandstrokecaribbean.com',phone:'',whatsapp:'',instagram:'',facebook:'',tiktok:''},
+ services:[{id:'couples',name:'🥂 Couples Sunset',s8:180,s11:200,unit:'per couple',duration:'2 hours',type:'pair',desc:'A romantic painting experience for two at a breathtaking Caribbean sunset.',active:true},{id:'solo',name:'🐚 Solo Escape',s8:85,s11:105,unit:'per person',duration:'2 hours',type:'solo',desc:'Your canvas, your vibe. Perfect me-time with drinks included.',active:true},{id:'group',name:'🎉 Private Group/Bachelorette',s8:150,s11:150,unit:'per person, min 6',duration:'3 hours',type:'group',desc:'Top shelf drinks, private session, unforgettable memories.',active:true},{id:'kids',name:'🧒 Kids Session',s8:40,s11:40,unit:'per child',duration:'2 hours',type:'kids',desc:'Little artists, big smiles! Non-alcoholic drinks for all kids.',active:true},{id:'family',name:'Family Session',s8:250,s11:270,unit:'per family',duration:'2 hours',type:'family',desc:'A guided family painting experience for lasting memories.',active:true},{id:'mother',name:'Mother / Father and Daughter',s8:150,s11:170,unit:'per pair',duration:'2 hours',type:'pair',desc:'A special bonding session for parent and daughter.',active:true}],
+ sessions:[{serviceId:'couples',date:'2026-06-15',time:'10:00 AM',slots:10,booked:3,active:true},{serviceId:'mother',date:'2026-06-15',time:'2:00 PM',slots:10,booked:4,active:true},{serviceId:'father',date:'2026-06-16',time:'10:00 AM',slots:10,booked:2,active:true},{serviceId:'group',date:'2026-06-16',time:'2:00 PM',slots:10,booked:5,active:true},{serviceId:'solo',date:'2026-06-17',time:'10:00 AM',slots:10,booked:0,active:true},{serviceId:'kids',date:'2026-06-18',time:'2:00 PM',slots:10,booked:4,active:true}],
+ partners:[{name:'Example Resort Partner',contact:'',phone:'',email:'',website:'',active:false}],
+ reviews:[{name:'Sample Review',rating:5,text:'This is a sample review. Turn it off until you have real customer reviews.',active:false}],
+ payments:{stripe:false,paypal:false,square:false,stripePublishable:'',paypalClient:'',squareApp:''},
+ terms:[['🚫','No Refunds','Sessions are non-refundable. Reschedule at least 24 hours in advance.'],['🍷','Alcohol Policy','Served to guests 21 and older only. Valid government-issued ID required.'],['📸','Photo Privacy','Guest photos will NOT be used for marketing or promotional purposes.'],['👕','Apron Provided','A disposable apron is provided. We are not responsible for clothing damage.'],['🌦️','Venue & Weather','Sessions held indoors or outdoors depending on weather at the resort.'],['🖼️','Canvas Policy','Canvas prepared from submitted photo. No reprints after session begins.'],['👜','Personal Belongings','Not responsible for lost, stolen or damaged personal belongings.'],['✍️','Authorization','By booking you authorize the charge. Digital signature and ID collected as proof.']]
+};
+function cfg(){let saved=localStorage.getItem('ssc_config_v2'); if(!saved) return structuredClone(DEFAULT); try{return Object.assign(structuredClone(DEFAULT), JSON.parse(saved));}catch(e){return structuredClone(DEFAULT);}}
+let C=cfg(), S={id:null,step:1,name:'',email:'',date:'',guests:1,canvas:'8x10',notes:''};
+function money(n){return '$'+Number(n||0).toLocaleString();}
+function svc(id){return C.services.find(s=>s.id===id)||C.services[0];}
+function todayStart(){let d=new Date();d.setHours(0,0,0,0);return d;}
+function fmtDate(d){let x=new Date(d+'T12:00:00');return x.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric'});}
+function futureSessions(){return C.sessions.filter(s=>s.active && new Date(s.date+'T23:59:59')>=todayStart()).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));}
+function render(){document.getElementById('year').textContent=new Date().getFullYear();document.getElementById('welcomeTitle').textContent=C.content.welcomeTitle;document.getElementById('welcomeMessage').textContent=C.content.welcomeMessage;document.getElementById('heroSub').innerHTML=C.content.heroSub;renderPackages();renderSessions();renderPartners();renderReviews();renderTerms();renderContact();}
+function renderPackages(){let ids=['couples','solo','group','kids'];let h='';ids.forEach(id=>{let s=svc(id);if(!s.active)return;h+=`<div class="card" onclick="openModal('${id}')"><img src="./${IMG[id]}" alt="${s.name}"><div class="card-body"><div class="card-price">${money(s.s8)}</div><div class="card-name">${s.name}</div><div class="card-meta">${s.unit} &middot; 8x10 or 11x14 &middot; ${s.duration}</div><div class="card-desc">${s.desc}</div><button class="card-btn">Book Now</button></div></div>`;});document.getElementById('packageGrid').innerHTML=h;document.getElementById('familyPrice').textContent=money(svc('family').s8);document.getElementById('motherPrice').textContent=money(svc('mother').s8);}
+function renderSessions(){let fs=futureSessions();let h='';fs.forEach((ss,i)=>{let s=svc(ss.serviceId);let open=Math.max(0,ss.slots-ss.booked);h+=`<div class="sess-card"><div class="sess-name">${s.name}</div><div class="sess-date">${fmtDate(ss.date)} &middot; ${ss.time}</div><span class="sess-badge">${open} slots open</span><button class="card-btn" style="margin-top:12px" onclick="openModal('${s.id}','${ss.date} ${ss.time}')">Book This</button></div>`;});document.getElementById('sessionGrid').innerHTML=h||'<div class="sess-card"><b>No sessions available yet.</b><div class="sess-date">Please check back soon or contact us.</div></div>';}
+function renderPartners(){let list=C.partners.filter(p=>p.active);document.getElementById('partnerGrid').innerHTML=list.map(p=>`<div class="partner-card"><div class="partner-name">${p.name}</div><div class="partner-info">${p.website?'<b>Website:</b> '+p.website+'<br>':''}${p.phone?'<b>Phone:</b> '+p.phone+'<br>':''}${p.email?'<b>Email:</b> '+p.email:''}</div></div>`).join('')||'<div class="partner-card"><b>Partner resorts coming soon.</b><div class="partner-info">This section will update when partners are added in the dashboard.</div></div>';}
+function renderReviews(){let list=C.reviews.filter(r=>r.active);document.getElementById('reviewGrid').innerHTML=list.map(r=>`<div class="review-card"><div class="review-stars">${'★'.repeat(Number(r.rating||5))}</div><div class="review-text">“${r.text}”</div><div class="review-name">— ${r.name}</div></div>`).join('')||'<div class="review-card"><b>Reviews coming soon.</b><div class="review-text">Once the business opens, approved guest reviews can be shown here.</div></div>';}
+function renderTerms(){document.getElementById('termsGrid').innerHTML=C.terms.map(t=>`<div class="term"><div class="term-icon">${t[0]}</div><div><div class="term-title">${t[1]}</div><div class="term-text">${t[2]}</div></div></div>`).join('');}
+function renderContact(){let c=C.contact;document.getElementById('footerEmail').textContent=c.email||'info@sipandstrokecaribbean.com';let pills=[];if(c.phone)pills.push(`<a class="contact-pill" href="tel:${c.phone}">Phone: ${c.phone}</a>`);if(c.whatsapp)pills.push(`<a class="contact-pill" href="https://wa.me/${c.whatsapp.replace(/\D/g,'')}">WhatsApp</a>`);if(c.email)pills.push(`<a class="contact-pill" href="mailto:${c.email}">${c.email}</a>`);if(c.instagram)pills.push(`<a class="contact-pill" href="${c.instagram}">Instagram</a>`);if(c.facebook)pills.push(`<a class="contact-pill" href="${c.facebook}">Facebook</a>`);document.getElementById('contactBar').innerHTML=pills.join('');document.getElementById('footerSocial').innerHTML=[c.phone,c.whatsapp,c.instagram,c.facebook,c.tiktok].filter(Boolean).join(' &middot; ');}
+function openModal(id,dateVal){S={id:id,step:id?2:1,name:'',email:'',date:dateVal||'',guests:id&&svc(id).type==='group'?6:1,canvas:'8x10',notes:''};document.getElementById('modal-bg').classList.add('open');draw();}
+function closeModal(){document.getElementById('modal-bg').classList.remove('open');}
+function total(){let s=svc(S.id);let base=S.canvas==='11x14'?s.s11:s.s8;let n=s.type==='pair'?2:s.type==='group'?Math.max(6,S.guests):S.guests;return base*n;}
+function draw(){let b=document.getElementById('modal-body'); if(S.step===1){b.innerHTML='<div style="font-family:Pacifico,cursive;font-size:22px;margin-bottom:12px">Choose Your Package</div>'+C.services.filter(s=>s.active).map(s=>`<div class="choice" onclick="S.id='${s.id}';S.guests=svc(S.id).type==='group'?6:1;S.step=2;draw()"><b>${s.name}</b><small>${s.unit} &middot; Starts at ${money(s.s8)} &middot; ${s.duration}</small></div>`).join('');return;}let s=svc(S.id);if(S.step===2){let fs=futureSessions();let opts=fs.map(x=>`<option value="${x.date} ${x.time}" ${S.date===x.date+' '+x.time?'selected':''}>${fmtDate(x.date)} - ${x.time} - ${svc(x.serviceId).name}</option>`).join('');let guest='';if(s.type!=='pair'){let min=s.type==='group'?6:1,max=s.type==='kids'?10:10;guest='<label class="lbl">GUESTS</label><select class="inp" onchange="S.guests=parseInt(this.value);draw()">';for(let i=min;i<=max;i++)guest+=`<option value="${i}" ${S.guests===i?'selected':''}>${i} ${s.type==='kids'?(i===1?'child':'children'):'guests'}</option>`;guest+='</select>';}else guest='<div class="note">Pair package includes 2 guests.</div>';b.innerHTML=`<div style="font-family:Pacifico,cursive;font-size:22px;margin-bottom:4px">${s.name}</div><div style="font-size:12px;color:#7A9EAE;margin-bottom:14px">${s.unit} &middot; ${s.duration}</div><label class="lbl">YOUR NAME</label><input class="inp" value="${S.name}" oninput="S.name=this.value" placeholder="Full name"><label class="lbl">EMAIL</label><input class="inp" type="email" value="${S.email}" oninput="S.email=this.value" placeholder="your@email.com"><label class="lbl">SESSION DATE</label><select class="inp" onchange="S.date=this.value"><option value="">Select a date...</option>${opts}</select>${guest}<label class="lbl">CANVAS SIZE</label><select class="inp" onchange="S.canvas=this.value;draw()"><option value="8x10" ${S.canvas==='8x10'?'selected':''}>8x10 - Included</option><option value="11x14" ${S.canvas==='11x14'?'selected':''}>11x14 - Upgrade</option></select><label class="lbl">NOTES</label><input class="inp" value="${S.notes}" oninput="S.notes=this.value" placeholder="Names, drink choices, special request"><div class="tot-bar"><b>Total Due</b><span style="font-family:Pacifico,cursive;font-size:24px;color:#FF6B4A">${money(total())}</span></div><div class="btn-row"><button class="btn-back" onclick="S.step=1;draw()">Back</button><button class="btn-next" onclick="if(S.name&&S.email&&S.date){S.step=3;draw()}else alert('Please fill in name, email, and date.')">Review</button></div>`;return;}b.innerHTML=`<div style="font-family:Pacifico,cursive;font-size:22px;margin-bottom:12px">Review Booking</div><div class="sum-row"><span>Package</span><b>${s.name}</b></div><div class="sum-row"><span>Date</span><b>${S.date}</b></div><div class="sum-row"><span>Canvas</span><b>${S.canvas}</b></div><div class="sum-row"><span>Total</span><b>${money(total())}</b></div><div class="note"><b>Payment setup:</b> When Stripe/PayPal/Square is connected, this button can be changed to real checkout. For now it records a booking request only.</div><div class="btn-row"><button class="btn-back" onclick="S.step=2;draw()">Back</button><button class="btn-next" onclick="S.step=4;draw()">Submit Request</button></div>`;if(S.step===4)b.innerHTML='<div style="text-align:center;padding:28px"><div style="font-family:Pacifico,cursive;font-size:26px;color:#073B4C;margin-bottom:8px">Booking Request Sent!</div><p style="line-height:1.7;color:#556660">Thank you. This demo stores settings locally. Connect a real booking/payment backend before public launch.</p><button class="bb" style="margin-top:18px" onclick="closeModal()">Close</button></div>';}
+render();
+</script>
+</body>
+</html>
